@@ -161,7 +161,7 @@ namespace CDato
             return reader;
         }
         //Ejecutar Procedimiento full parametros sin devolver nada solo el estado
-        public string Ejecutar_ProcedimientoAlmacenadoFullParametros(String nombre, String[] parametros, String[] tipoParametros)
+        public string Ejecutar_ProcedimientoAlmacenadoFullParametros(String nombre, Object[] parametros, Object[] tipoParametros)
         {
             SqlTransaction transaction = null;
             try
@@ -182,12 +182,12 @@ namespace CDato
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Clear();
-
+                
                 List<SqlParameter> list = new List<SqlParameter>();
 
                 for (int i = 0; i < parametros.Length; i++)
                 {
-                    list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i].ToString()));
+                    list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i]));
                 }
                 cmd.Parameters.AddRange(list.ToArray<SqlParameter>());
 
@@ -467,14 +467,14 @@ namespace CDato
 
         
 
-        public DataTable obtenerDataTableCsv(string csv_file_path)
+        public DataTable obtenerDataTableCsv(string csv_file_path, string delimiter)
         {
             DataTable csvData = new DataTable();
             try
             {
                 using (TextFieldParser csvReader = new TextFieldParser(csv_file_path))
                 {
-                    csvReader.SetDelimiters(new string[] { ";" });
+                    csvReader.SetDelimiters(new string[] { delimiter });
                     csvReader.HasFieldsEnclosedInQuotes = true;
                     string[] colFields = csvReader.ReadFields();
                     foreach (string column in colFields)
