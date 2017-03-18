@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using System.Data;
-using System.ComponentModel;
-using System.Drawing;
 using Microsoft.VisualBasic.FileIO;
-
+using System.Windows.Forms;
 
 
 namespace CDato
@@ -19,11 +20,16 @@ namespace CDato
         private SqlConnection sqlConexion;
         private SqlCommand sqlComando;
         private SqlDataReader sqlDr;
+        private SqlDataAdapter sqlDa;
+        private SqlCommandBuilder sqlCb;
+        private DataSet ds;
         private string estado;
         private string bd = "bdevenezer";
         private string Datasource = "localhost";
         private string Usuario = "sa";
         private string Password = "milmanu15";
+        private String error;
+        
 
 
         private List<string> listaRetorno;
@@ -44,7 +50,15 @@ namespace CDato
             }
 
         }
+        public String getError()
+        {
+            return this.error;
+        }
 
+        public void setIdAcceso(String error)
+        {
+            this.error = error;
+        }
         public csConexions(String baseDatos)
         {
             try
@@ -73,6 +87,37 @@ namespace CDato
             }
             return listaRetorno;
 
+        }
+        //Metodo para obtener datos desconectado
+        public DataSet ejecutarQuery(String query, String tabla, String tipoConsulta)
+        {
+            ds = new DataSet();
+            try
+            {
+                
+
+                if (sqlConexion.State.ToString() == "Open")
+                    sqlConexion.Close();
+                sqlConexion.Open();
+                
+                sqlDa = new SqlDataAdapter();
+                SqlCommand command = null;
+                
+
+                command = new SqlCommand(query, sqlConexion);
+                sqlDa.SelectCommand = command;
+                    
+                sqlConexion.Close();
+
+                sqlDa.Fill(ds, tabla);
+                
+
+            }
+            catch(SqlException err)
+            {
+                error = err.Message + " codigo error " + err.Number.ToString();
+            }
+            return ds;
         }
         //PARA INSERTA UN REGISTRO EN LA BASE DE DATOS COMO PARAMETRO MI VARIABLE SQLSENTENCIA
         public string getUsuario()
@@ -121,44 +166,28 @@ namespace CDato
         //Procedimiento sin parametros
         public SqlDataReader Ejecutar_ProcedimientoAlmacenado(String nombre)
         {
-            SqlTransaction transaction = null;
-            SqlDataReader reader = null;
             try
             {
                 if (sqlConexion.State.ToString() == "Open")
                     sqlConexion.Close();
                 sqlConexion.Open();
 
-                //Inicio de la transaccion
-                transaction = sqlConexion.BeginTransaction("SampleTransaction");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = sqlConexion;
-                cmd.Transaction = transaction;
 
                 cmd.CommandText = nombre;//Nombre del procedimiento almacenado
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //                cmd.ExecuteNonQuery();
-                reader = cmd.ExecuteReader();
-                transaction.Commit();
+                sqlDr = cmd.ExecuteReader();
                 estado = "ok";
-                CerrarConexion();
             }
             catch (Exception ex)
             {
-                try
-                {
-                    transaction.Rollback();
-                }
-                catch (Exception ex2)
-                {
-                    estado = estado + " Exception rollback " + ex2.GetType() + "mensaje: " + ex2.Message;
-
-                }
                 sqlConexion.Close();
                 estado = "excepcion en commit tipo " + ex.GetType() + ":Error " + ex.Message + "\n";
             }
-            return reader;
+            return sqlDr;
         }
         //Ejecutar Procedimiento full parametros sin devolver nada solo el estado
         public string Ejecutar_ProcedimientoAlmacenadoFullParametros(String nombre, Object[] parametros, Object[] tipoParametros)
@@ -184,15 +213,17 @@ namespace CDato
                 cmd.Parameters.Clear();
                 
                 List<SqlParameter> list = new List<SqlParameter>();
-
-                for (int i = 0; i < parametros.Length; i++)
+                if (parametros != null)
                 {
-                    list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i]));
+                    for (int i = 0; i < parametros.Length; i++)
+                    {
+                        list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i]));
+                    }
+                    cmd.Parameters.AddRange(list.ToArray<SqlParameter>());
                 }
-                cmd.Parameters.AddRange(list.ToArray<SqlParameter>());
 
-                cmd.ExecuteNonQuery();
-
+               int res = cmd.ExecuteNonQuery();
+                
                 transaction.Commit();
                 estado = "ok";
 
@@ -217,55 +248,43 @@ namespace CDato
 
 
         //Ejecutar Procedimiento full parametros devuelve SqlDataReader
-        public SqlDataReader Ejecutar_ProcedimientoAlmacenadoFullParametros1(String nombre, String[] parametros, String[] tipoParametros)
+        public SqlDataReader Ejecutar_ProcedimientoAlmacenadoFullParametros1(String nombre, Object[] parametros, Object[] tipoParametros)
         {
-            SqlTransaction transaction = null;
-            SqlDataReader reader = null;
             try
             {
                 if (sqlConexion.State.ToString() == "Open")
                     sqlConexion.Close();
                 AbrirConexion();
 
-                //Inicio de la transaccion
-                transaction = sqlConexion.BeginTransaction("SampleTransaction");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = sqlConexion;
-                cmd.Transaction = transaction;
                 cmd.CommandText = nombre;//Nombre del procedimiento almacenado
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Clear();
-
+                
+                
                 List<SqlParameter> list = new List<SqlParameter>();
 
-                for (int i = 0; i < parametros.Length; i++)
+                if(parametros != null)
                 {
-                    list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i].ToString()));
+                    cmd.Parameters.Clear();
+                    for (int i = 0; i < parametros.Length; i++)
+                    {
+                        list.Add(new SqlParameter("@" + tipoParametros[i].ToString(), parametros[i].ToString()));
+                    }
+                    cmd.Parameters.AddRange(list.ToArray<SqlParameter>());
                 }
-                cmd.Parameters.AddRange(list.ToArray<SqlParameter>());
+                
 
-                reader = cmd.ExecuteReader();
-                transaction.Commit();
+                sqlDr = cmd.ExecuteReader();
                 estado = "ok";
-
-                CerrarConexion();
             }
             catch (Exception ex)
             {
-                try
-                {
-                    transaction.Rollback();
-                }
-                catch (Exception ex2)
-                {
-                    estado = estado + " Exception rollback " + ex2.GetType() + "mensaje: " + ex2.Message;
-
-                }
                 sqlConexion.Close();
                 estado = "excepcion en commit tipo " + ex.GetType() + ":Error " + ex.Message + "\n";
             }
-            return reader;
+            return sqlDr;
         }
 
 
@@ -348,7 +367,7 @@ namespace CDato
                     sqlConexion.Close();
                 sqlComando = new SqlCommand(sqlConsulta, sqlConexion);
                 sqlConexion.Open();
-                SqlDataReader sqlDr = sqlComando.ExecuteReader();
+                sqlDr = sqlComando.ExecuteReader();
 
                 estado = "ok Consulta";
                 return sqlDr;
@@ -507,11 +526,13 @@ namespace CDato
         }
         public void InsertDataIntoSQLServerUsingSQLBulkCopy(DataTable csvFileData, string tabla)
         {
-            if (sqlConexion.State.ToString() == "Open")
-                sqlConexion.Close();
-            sqlConexion.Open();
+            try
+            {
+                if (sqlConexion.State.ToString() == "Open")
+                    sqlConexion.Close();
+                sqlConexion.Open();
 
-            using (SqlBulkCopy s = new SqlBulkCopy(sqlConexion))
+                using (SqlBulkCopy s = new SqlBulkCopy(sqlConexion))
                 {
                     s.DestinationTableName = tabla;
                     foreach (var column in csvFileData.Columns)
@@ -519,6 +540,13 @@ namespace CDato
                     s.WriteToServer(csvFileData);
                 }
                 estado = "ok";
+            }
+            catch(Exception err)
+            {
+                error = err.Message;
+                estado = "error";
+            }
+            
         }
     }
 }
