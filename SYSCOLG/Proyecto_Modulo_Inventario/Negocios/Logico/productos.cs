@@ -80,15 +80,22 @@ namespace Proyecto_Modulo_Inventario.Negocios.Logico
 
             try
             {
+                Object[] objdatos = null;
+                Object[] tipodato = null;
                 lstProductos.Clear();
                 conex = new csConexions();
                 if (codigoProducto != "")
+                {
                     proced = "obtenerProductosxCodigo";
+                    objdatos = new Object[]{ codigoProducto, idBodega, idEmpresa };
+                    tipodato = new Object[]{ "codigo", "idBodega","idEmpresa" };
+                }
                 else if(descripcion != "")
+                {
                     proced = "obtenerProductosxDescripcion";
-
-                Object[] objdatos = { codigoProducto, idBodega, idEmpresa };
-                Object[] tipodato = { "codigo", "idBodega","idEmpresa" };
+                    objdatos = new Object[] { descripcion, idBodega, idEmpresa };
+                    tipodato = new Object[] { "descripcion", "idBodega", "idEmpresa" };
+                }
 
                 SqlDataReader reader = conex.Ejecutar_ProcedimientoAlmacenadoFullParametros1(proced,objdatos,tipodato);
 
@@ -109,7 +116,20 @@ namespace Proyecto_Modulo_Inventario.Negocios.Logico
                     tProductos.getTblProductos().getTblUndxCajas().setDetalleUnds(reader.GetString(11));
                     tProductos.getTblProductos().getTblUndxCajas().setCantidCaja(reader.GetInt32(12));
                     tProductos.getTblProductos().getTblUndxCajas().setCodigo(Convert.ToString(reader.GetValue(13)));
-                    tProductos.setPvp(Convert.ToDouble(reader.GetValue(28)));
+
+                    //Precios y Volumnes jalados desde la bd
+                    tProductos.setPvp(Convert.ToDouble(reader.GetValue(27)));
+                    tProductos.setPrecio1(Convert.ToDouble(reader.GetValue(28)));
+                    tProductos.setVol1(reader.GetInt32(38));
+                    tProductos.setPrecio2(Convert.ToDouble(reader.GetValue(29)));
+                    tProductos.setVol2(reader.GetInt32(39));
+                    tProductos.setPrecio3(Convert.ToDouble(reader.GetValue(30)));
+                    tProductos.setVol3(reader.GetInt32(40));
+                    tProductos.setPrecio4(Convert.ToDouble(reader.GetValue(31)));
+                    tProductos.setVol4(reader.GetInt32(41));
+                    tProductos.setPrecio5(Convert.ToDouble(reader.GetValue(32)));
+                    tProductos.setVol5(reader.GetInt32(42));
+
                     lstProductos.Add(tProductos);
                 }
                 conex.CerrarConexion();

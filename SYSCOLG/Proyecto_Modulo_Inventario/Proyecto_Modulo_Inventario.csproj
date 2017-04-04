@@ -107,6 +107,12 @@
     <Compile Include="Mod_Facturacion\frmFactura.Designer.cs">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mod_Facturacion\frmSubfBusqProdocuctos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mod_Facturacion\frmSubfBusqProdocuctos.Designer.cs">
+      <DependentUpon>frmSubfBusqProdocuctos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocios\Constructores\TblAcceso.cs" />
     <Compile Include="Negocios\Constructores\TblBancoCheques.cs" />
     <Compile Include="Negocios\Constructores\TblBancos.cs" />
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mod_Facturacion\frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mod_Facturacion\frmSubfBusqProdocuctos.resx">
+      <DependentUpon>frmSubfBusqProdocuctos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="permisos.resx">
       <DependentUpon>permisos.cs</DependentUpon>
