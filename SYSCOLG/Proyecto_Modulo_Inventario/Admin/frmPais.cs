@@ -20,39 +20,13 @@ namespace Proyecto_Modulo_Inventario.Admin
         Negocios.Logico.empresa empresa;
         List<Validaciones_y_Mas.LLenarCombo> lista;
         Validaciones_y_Mas.Validar_caja_texto cajasTexto;
-
-
-        const int WM_SYSCOMMAND = 0x112;
-        const int MOUSE_MOVE = 0xF012;
-        //
-        // Declaraciones del API
-        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        //
-        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        //
-        // función privada usada para mover el formulario actual
+        Point posicionFormulario;
+        Boolean accionMouse;
 
         public frmPais()
         {
             InitializeComponent();
-
-            //this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            //this.Label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
         }
-
-        private void moverForm()
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, WM_SYSCOMMAND, MOUSE_MOVE, 0);
-        }
-        private void Form1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            moverForm();
-        }
-
         private void lblCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -68,5 +42,22 @@ namespace Proyecto_Modulo_Inventario.Admin
             lblCerrar.BackColor = Color.Black;
         }
 
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            posicionFormulario = new Point(Cursor.Position.X - Location.X, Cursor.Position.Y - Location.Y);
+            accionMouse = true;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (accionMouse)
+                Location = new Point(Cursor.Position.X - posicionFormulario.X, Cursor.Position.Y - posicionFormulario.Y);
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            accionMouse = false;
+
+        }
     }
 }
