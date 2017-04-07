@@ -38,39 +38,7 @@ namespace Proyecto_Modulo_Inventario.Negocios.Logico
 
             return conex.Estado;
         }
-        public List<Negocios.Constructores.TblClientes> cargarGrid()
-        {
-            List<Constructores.TblClientes> lstClientes = new List<Constructores.TblClientes>();
-
-            try
-            {
-                lstClientes.Clear();
-                conex = new csConexions();
-                SqlDataReader reader = conex.Ejecutar_ProcedimientoAlmacenado("obtenerClientes");
-
-                while (reader.Read())
-                {
-                    tClientes = new Constructores.TblClientes();
-                    //dgvEmpresa[0, i].Value = (i + 1);
-                    tClientes.setIdCliente(reader.GetInt32(16));
-                    tClientes.setCedulaCliente(reader.GetValue(5) == null ? "" : reader.GetValue(5).ToString());
-                    tClientes.setNombresCliente(reader.GetValue(0) == null ? null : reader.GetValue(0).ToString());
-                    tClientes.setApellidosCliente(reader.GetValue(1) == null ? "": reader.GetValue(1).ToString());
-                    tClientes.setDireccion(reader.GetValue(2) == null ? null : reader.GetValue(2).ToString());
-                    tClientes.setTelefono(reader.GetValue(3) == null ? null : reader.GetValue(3).ToString());
-
-                    lstClientes.Add(tClientes);
-                }
-                conex.CerrarConexion();
-                reader.Close();
-            }
-            catch (Exception err)
-            {
-
-            }
-
-            return lstClientes;
-        }
+        
 
     }
 }

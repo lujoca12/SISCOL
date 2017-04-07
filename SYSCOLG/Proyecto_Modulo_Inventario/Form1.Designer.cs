@@ -32,29 +32,33 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Registrar", -2, -2);
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Edicion");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Compras", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Proveedores");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Compras", new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Consultar Productos");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Control de Caducidad", new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nueva");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Anular/Modificar");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Facturacion", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Etiquetas para Perchas");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Herramientas", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Consultar Productos");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Control de Caducidad", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nueva");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Anular/Modificar");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Clientes");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Facturacion", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
             treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Importar/Exportar Datos");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Empresa");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ciudad");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("País");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Configuración", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Etiquetas para Perchas");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Herramientas", new System.Windows.Forms.TreeNode[] {
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Importar/Exportar Datos");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Empresa");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Ciudad");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("País");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Configuración", new System.Windows.Forms.TreeNode[] {
             treeNode13,
-            treeNode14});
+            treeNode14,
+            treeNode15,
+            treeNode16});
             this.label7 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -84,6 +88,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +98,6 @@
             this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -362,6 +366,63 @@
             this.statusStrip1.TabIndex = 34;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // treeView1
+            // 
+            this.treeView1.BackColor = System.Drawing.Color.White;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeView1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.treeView1.Location = new System.Drawing.Point(0, 53);
+            this.treeView1.Name = "treeView1";
+            treeNode1.ImageIndex = -2;
+            treeNode1.Name = "nCompras";
+            treeNode1.SelectedImageIndex = -2;
+            treeNode1.Text = "Registrar";
+            treeNode2.ImageKey = "(predeterminada)";
+            treeNode2.Name = "Nodo5";
+            treeNode2.SelectedImageIndex = -2;
+            treeNode2.Text = "Edicion";
+            treeNode3.Name = "nProveedores";
+            treeNode3.Text = "Proveedores";
+            treeNode4.ImageIndex = -2;
+            treeNode4.Name = "Nodo1";
+            treeNode4.Text = "Compras";
+            treeNode5.Name = "Nodo6";
+            treeNode5.Text = "Consultar Productos";
+            treeNode6.ImageIndex = -2;
+            treeNode6.Name = "Nodo2";
+            treeNode6.Text = "Control de Caducidad";
+            treeNode7.Name = "nFactura";
+            treeNode7.Text = "Nueva";
+            treeNode8.Name = "Nodo5";
+            treeNode8.Text = "Anular/Modificar";
+            treeNode9.Name = "nClientes";
+            treeNode9.Text = "Clientes";
+            treeNode10.Name = "Nodo1";
+            treeNode10.Text = "Facturacion";
+            treeNode11.Name = "Nodo4";
+            treeNode11.Text = "Etiquetas para Perchas";
+            treeNode12.Name = "Nodo3";
+            treeNode12.Text = "Herramientas";
+            treeNode13.Name = "nImpExpDatos";
+            treeNode13.Text = "Importar/Exportar Datos";
+            treeNode14.Name = "nEmpresa";
+            treeNode14.Text = "Empresa";
+            treeNode15.Name = "nCiudad";
+            treeNode15.Text = "Ciudad";
+            treeNode16.Name = "nPais";
+            treeNode16.Text = "País";
+            treeNode17.Name = "nConfig";
+            treeNode17.Text = "Configuración";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode6,
+            treeNode10,
+            treeNode12,
+            treeNode17});
+            this.treeView1.Size = new System.Drawing.Size(187, 394);
+            this.treeView1.TabIndex = 35;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem.Image")));
@@ -443,59 +504,6 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // treeView1
-            // 
-            this.treeView1.BackColor = System.Drawing.Color.White;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.treeView1.Location = new System.Drawing.Point(0, 53);
-            this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = -2;
-            treeNode1.Name = "Nodo3";
-            treeNode1.SelectedImageIndex = -2;
-            treeNode1.Text = "Registrar";
-            treeNode2.ImageKey = "(predeterminada)";
-            treeNode2.Name = "Nodo5";
-            treeNode2.SelectedImageIndex = -2;
-            treeNode2.Text = "Edicion";
-            treeNode3.ImageIndex = -2;
-            treeNode3.Name = "Nodo1";
-            treeNode3.Text = "Compras";
-            treeNode4.Name = "Nodo6";
-            treeNode4.Text = "Consultar Productos";
-            treeNode5.ImageIndex = -2;
-            treeNode5.Name = "Nodo2";
-            treeNode5.Text = "Control de Caducidad";
-            treeNode6.Name = "nFactura";
-            treeNode6.Text = "Nueva";
-            treeNode7.Name = "Nodo5";
-            treeNode7.Text = "Anular/Modificar";
-            treeNode8.Name = "Nodo1";
-            treeNode8.Text = "Facturacion";
-            treeNode9.Name = "Nodo4";
-            treeNode9.Text = "Etiquetas para Perchas";
-            treeNode10.Name = "Nodo3";
-            treeNode10.Text = "Herramientas";
-            treeNode11.Name = "nImpExpDatos";
-            treeNode11.Text = "Importar/Exportar Datos";
-            treeNode12.Name = "nEmpresa";
-            treeNode12.Text = "Empresa";
-            treeNode13.Name = "nCiudad";
-            treeNode13.Text = "Ciudad";
-            treeNode14.Name = "nPais";
-            treeNode14.Text = "País";
-            treeNode15.Name = "nConfig";
-            treeNode15.Text = "Configuración";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode5,
-            treeNode8,
-            treeNode10,
-            treeNode15});
-            this.treeView1.Size = new System.Drawing.Size(187, 394);
-            this.treeView1.TabIndex = 35;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // frmPrincipal
             // 

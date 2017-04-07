@@ -14,15 +14,16 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
         private String direccion;
         private String telefono;
         private String email;
-        private float cupo;
+        private double cupo;
         private char estado;
-        private float saldo;
+        private double saldo;
         private double interes_Mora;
         private char forma_pago;
         private String telf1;
         private String telf2;
         private String telf_trabajo;
         private String trabajo;
+        private String codigoCliente;
         // private Set tblFacturas = new HashSet(0);
 
         public TblClientes()
@@ -36,7 +37,7 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
         }
 
         public TblClientes(int id_Cliente,String cedulaCliente, String nombresCliente, String apellidosCliente, String direccion, String telefono, 
-            String email, float cupo, char estado, float saldo, double interes_Mora, char forma_pago, String telf1, String telf2, String telf_trabajo, String trabajo)
+            String email, double cupo, char estado, double saldo, double interes_Mora, char forma_pago, String telf1, String telf2, String telf_trabajo, String trabajo, String codigoCliente)
         {
             this.id_Cliente = id_Cliente;
             this.cedulaCliente = cedulaCliente;
@@ -54,6 +55,7 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
             this.telf2 = telf2;
             this.telf_trabajo = telf_trabajo;
             this.trabajo = trabajo;
+            this.codigoCliente = codigoCliente;
         }
 
         public int getIdCliente()
@@ -119,11 +121,11 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
             this.email = email;
         }
 
-        public float getCupo()
+        public double getCupo()
         {
             return this.cupo;
         }
-        public void setCupo(float cupo)
+        public void setCupo(double cupo)
         {
             this.cupo = cupo;
         }
@@ -138,12 +140,12 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
             this.estado = estado;
         }
 
-        public float getSaldo()
+        public double getSaldo()
         {
             return saldo;
         }
 
-        public void setSaldo(float saldo)
+        public void setSaldo(double saldo)
         {
             this.saldo = saldo;
         }
@@ -206,6 +208,15 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
         public void setTrabajo(String trabajo)
         {
             this.trabajo = trabajo;
+        }
+        public String getCodigoCliente()
+        {
+            return codigoCliente;
+        }
+
+        public void setCodigoCliente(String codigoCliente)
+        {
+            this.codigoCliente = codigoCliente;
         }
 
         //public Set getTblFacturas()

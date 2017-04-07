@@ -74,7 +74,7 @@ namespace Proyecto_Modulo_Inventario
        
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Name.Equals("Nodo3"))
+            if (e.Node.Name.Equals("nCompras"))
                 registrarCompra();
 
             if (e.Node.Name.Equals("nFactura"))
@@ -88,15 +88,29 @@ namespace Proyecto_Modulo_Inventario
                 registrarCiudad();
             if (e.Node.Name.Equals("nPais"))
                 registrarPais();
+            if (e.Node.Name.Equals("nClientes"))
+                registrarClientes();
+            if (e.Node.Name.Equals("nProveedores"))
+                registrarProveedores();
         }
         private void registrarCompra()
         {
-            ///llamar = new Validaciones_y_Mas.LLamarFormularios();
-            //Compras frmCompras = new Compras();
-            permisos frm = new permisos();
+            Mod_Inventario.frmCompra frm = new Mod_Inventario.frmCompra();
+            frm.MdiParent = this;
+            frm.txtIdProveedor.Focus();
+            frm.Show();
+        }
+        private void registrarProveedores()
+        {
+            Mod_Inventario.frmProveedores frm = new Mod_Inventario.frmProveedores();
             frm.MdiParent = this;
             frm.Show();
-            //llamar.LLamarFrm(frmCompras, this.nTranBodega);
+        }
+        private void registrarClientes()
+        {
+            Mod_Facturacion.frmClientes frm = new Mod_Facturacion.frmClientes();
+            frm.MdiParent = this;
+            frm.Show();
         }
         private void registrarEmpresa()
         {
@@ -161,7 +175,12 @@ namespace Proyecto_Modulo_Inventario
 
         private void label1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult msg;
+            msg = MessageBox.Show("Desea salir del Sistema", "Mensaje del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (msg == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)

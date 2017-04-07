@@ -63,6 +63,16 @@ namespace Proyecto_Modulo_Inventario.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _003_clientes {
+            get {
+                object obj = ResourceManager.GetObject("003-clientes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_group {
             get {
                 object obj = ResourceManager.GetObject("add_group", resourceCulture);
@@ -133,9 +143,29 @@ namespace Proyecto_Modulo_Inventario.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clientes {
+            get {
+                object obj = ResourceManager.GetObject("clientes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap compfile {
             get {
                 object obj = ResourceManager.GetObject("compfile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap counsel {
+            get {
+                object obj = ResourceManager.GetObject("counsel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +206,16 @@ namespace Proyecto_Modulo_Inventario.Properties {
         internal static System.Drawing.Bitmap ico_cancelar {
             get {
                 object obj = ResourceManager.GetObject("ico_cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inv {
+            get {
+                object obj = ResourceManager.GetObject("inv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

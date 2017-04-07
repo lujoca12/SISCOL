@@ -8,16 +8,16 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
     public class TblProveedores:TblCompras
     {
         private Int32 idProveedor;
-        private Int32 rucProveedor;
+        private String rucProveedor;
         private String nombreProveed;
         private String apellidoProveed;
         private String telefono;
         private String direccion;
         private String email;
-        private Int32 serieComprob;
-        private Int32 desdeFactura;
-        private Int32 hastaFactura;
-        private Int32 autorizacion;
+        private String serieComprob;
+        private String desdeFactura;
+        private String hastaFactura;
+        private String autorizacion;
         private DateTime fechaEmision;
         private DateTime fechaCaducidad;
         //private Set tblRetencioneses = new HashSet(0);
@@ -26,10 +26,12 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
 
         public TblProveedores()
         {
+            
         }
 
-        public TblProveedores(Int32 rucProveedor, String nombreProveed, String apellidoProveed, String telefono, String direccion, String email, Int32 serieComprob, Int32 desdeFactura, Int32 hastaFactura, Int32 autorizacion, DateTime fechaEmision, DateTime fechaCaducidad)//, Set tblRetencioneses, Set tblComprases, Set tblProductProveedoreses)
+        public TblProveedores(Int32 idProveedor,String rucProveedor, String nombreProveed, String apellidoProveed, String telefono, String direccion, String email, String serieComprob, String desdeFactura, String hastaFactura, String autorizacion, DateTime fechaEmision, DateTime fechaCaducidad)//, Set tblRetencioneses, Set tblComprases, Set tblProductProveedoreses)
         {
+            this.idProveedor = idProveedor;
             this.rucProveedor = rucProveedor;
             this.nombreProveed = nombreProveed;
             this.apellidoProveed = apellidoProveed;
@@ -47,6 +49,7 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
             //this.tblProductProveedoreses = tblProductProveedoreses;
         }
 
+
         public Int32 getIdProveedor()
         {
             return this.idProveedor;
@@ -56,12 +59,12 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
         {
             this.idProveedor = idProveedor;
         }
-        public Int32 getRucProveedor()
+        public String getRucProveedor()
         {
             return this.rucProveedor;
         }
 
-        public void setRucProveedor(Int32 rucProveedor)
+        public void setRucProveedor(String rucProveedor)
         {
             this.rucProveedor = rucProveedor;
         }
@@ -110,39 +113,39 @@ namespace Proyecto_Modulo_Inventario.Negocios.Constructores
         {
             this.email = email;
         }
-        public Int32 getSerieComprob()
+        public String getSerieComprob()
         {
             return this.serieComprob;
         }
 
-        public void setSerieComprob(Int32 serieComprob)
+        public void setSerieComprob(String serieComprob)
         {
             this.serieComprob = serieComprob;
         }
-        public Int32 getDesdeFactura()
+        public String getDesdeFactura()
         {
             return this.desdeFactura;
         }
 
-        public void setDesdeFactura(Int32 desdeFactura)
+        public void setDesdeFactura(String desdeFactura)
         {
             this.desdeFactura = desdeFactura;
         }
-        public Int32 getHastaFactura()
+        public String getHastaFactura()
         {
             return this.hastaFactura;
         }
 
-        public void setHastaFactura(Int32 hastaFactura)
+        public void setHastaFactura(String hastaFactura)
         {
             this.hastaFactura = hastaFactura;
         }
-        public Int32 getAutorizacion()
+        public String getAutorizacion()
         {
             return this.autorizacion;
         }
 
-        public void setAutorizacion(Int32 autorizacion)
+        public void setAutorizacion(String autorizacion)
         {
             this.autorizacion = autorizacion;
         }

@@ -101,6 +101,12 @@
     <Compile Include="Mod_Facturacion\frmBuscarProducto.Designer.cs">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mod_Facturacion\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mod_Facturacion\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mod_Facturacion\frmFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,24 @@
     </Compile>
     <Compile Include="Mod_Facturacion\frmSubfBusqProdocuctos.Designer.cs">
       <DependentUpon>frmSubfBusqProdocuctos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmBuscarProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmBuscarProveedores.Designer.cs">
+      <DependentUpon>frmBuscarProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmCompra.Designer.cs">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mod_Inventario\frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocios\Constructores\TblAcceso.cs" />
     <Compile Include="Negocios\Constructores\TblBancoCheques.cs" />
@@ -153,9 +177,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocios\Logico\buscarCliente.cs" />
+    <Compile Include="Negocios\Logico\clientes.cs" />
     <Compile Include="Negocios\Logico\empresa.cs" />
     <Compile Include="Negocios\Logico\pais.cs" />
     <Compile Include="Negocios\Logico\productos.cs" />
+    <Compile Include="Negocios\Logico\proveedores.cs" />
     <Compile Include="permisos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,11 +217,23 @@
     <EmbeddedResource Include="Mod_Facturacion\frmBuscarProducto.resx">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mod_Facturacion\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mod_Facturacion\frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mod_Facturacion\frmSubfBusqProdocuctos.resx">
       <DependentUpon>frmSubfBusqProdocuctos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mod_Inventario\frmBuscarProveedores.resx">
+      <DependentUpon>frmBuscarProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mod_Inventario\frmCompra.resx">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mod_Inventario\frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="permisos.resx">
       <DependentUpon>permisos.cs</DependentUpon>
@@ -228,7 +266,6 @@
   <ItemGroup>
     <Folder Include="Mod_Cartera\" />
     <Folder Include="Mod_Contable\" />
-    <Folder Include="Mod_Inventario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Imagenes\ico_cancelar.gif" />
@@ -304,6 +341,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Imagenes\ver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imagenes\counsel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imagenes\003-clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imagenes\clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imagenes\inv.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
